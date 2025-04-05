@@ -13,12 +13,14 @@ spring:
             - Path=/api/users/**
           filters:
             - RewritePath=/api/users/(?<segment>.*), /$\{segment}
+
         - id: company-service
           uri: lb://company-service
           predicates:
             - Path=/api/companies/**
           filters:
             - RewritePath=/api/companies/(?<segment>.*), /$\{segment}
+
       discovery:
         locator:
           enabled: true
@@ -29,10 +31,10 @@ spring:
 eureka:
   client:
     service-url:
-      default-zone: http://localhost:8081/eureka/
+      default-zone: http://localhost:8761/eureka/
     register-with-eureka: true
     fetch-registry: true
 
 logging:
   level:
-    org.springframework.cloud.gateway: INFO
+    org.springframework.cloud.gateway: DEBUG
