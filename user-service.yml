@@ -21,16 +21,16 @@ spring:
     name: user-service
   cloud:
     config:
-      uri: http://config-server:8888
+      uri: http://localhost:8888
       fail-fast: true
 
 eureka:
   client:
     service-url:
-      default-zone: http://eureka-server:8081/eureka/
+      default-zone: http://localhost:8761/eureka/
     register-with-eureka: true
     fetch-registry: true
 
 company:
   service:
-    url: http://company-service:8882
+    url: http://localhost:8882
