@@ -12,11 +12,11 @@ spring:
           lower-case-service-id: true
       routes:
         - id: company-service
-          uri: lb://company-service
+          uri: http://localhost:8882
           predicates:
             - Path=/api/companies/**
         - id: user-service
-          uri: lb://user-service
+          uri: http://localhost:8881
           predicates:
             - Path=/api/users/**
 eureka:
