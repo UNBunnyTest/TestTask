@@ -16,9 +16,11 @@ spring:
           predicates:
             - Path=/api/companies/**
 
-      discovery:
-        locator:
-          enabled: true
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/users/**
+
     config:
       uri: http://localhost:8888
       fail-fast: true
