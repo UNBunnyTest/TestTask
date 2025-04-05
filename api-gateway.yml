@@ -13,22 +13,10 @@ spring:
           uri: lb://company-service
           predicates:
             - Path=/api/companies/**
-
         - id: user-service
           uri: lb://user-service
           predicates:
             - Path=/api/users/**
-
-    config:
-      uri: http://localhost:8888
-      fail-fast: true
-
-eureka:
-  client:
-    service-url:
-      default-zone: http://localhost:8761/eureka/
-    register-with-eureka: true
-    fetch-registry: true
 
 logging:
   level:
