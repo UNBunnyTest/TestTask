@@ -17,7 +17,6 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/api/users/**
-
 eureka:
   client:
     service-url:
