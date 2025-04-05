@@ -1,0 +1,34 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/users/**
+          filters:
+            - RewritePath=/api/users/(?<segment>.*), /$\{segment}
+        - id: company-service
+          uri: lb://company-service
+          predicates:
+            - Path=/api/companies/**
+          filters:
+            - RewritePath=/api/companies/(?<segment>.*), /$\{segment}
+      discovery:
+        locator:
+          enabled: true
+    config:
+      uri: http://localhost:8888
+      fail-fast: true
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8081/eureka/
+    register-with-eureka: true
+    fetch-registry: true
