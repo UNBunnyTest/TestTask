@@ -8,26 +8,29 @@ spring:
     gateway:
       discovery:
         locator:
-          enabled: true
-          lower-case-service-id: true
+          enabled: false
       routes:
         - id: company-service
-          uri: http://localhost:8882
+          uri: lb://company-service
           predicates:
             - Path=/api/companies/**
+          filters:
+            - StripPrefix=1
         - id: user-service
-          uri: http://localhost:8881
+          uri: lb://user-service
           predicates:
             - Path=/api/users/**
+          filters:
+            - StripPrefix=1
+
 eureka:
   client:
     service-url:
       default-zone: http://localhost:8761/eureka/
     register-with-eureka: true
     fetch-registry: true
-    enabled: true
-    
+
 logging:
   level:
     org.springframework.cloud.gateway: DEBUG
-    org.springframework.cloud.config: DEBUG
+    org.springframework.cloud.client.discovery: DEBUG
