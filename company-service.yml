@@ -19,14 +19,6 @@ spring:
   application:
     name: company-service
 
-eureka:
-  client:
-    service-url:
-      default-zone: http://eureka-server:8761/eureka/
-    register-with-eureka: true
-    fetch-registry: true
-    enabled: true
-
 user:
   service:
     url: http://user-service:8881
