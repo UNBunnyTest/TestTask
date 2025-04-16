@@ -33,5 +33,3 @@ eureka:
 company:
   service:
     url: http://company-service:8882
-
-перепеши
