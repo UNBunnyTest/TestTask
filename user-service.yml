@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://postgres-user:5432/user_db
+    url: jdbc:postgresql://localhost:5432/user_db
     username: postgres  
     password: root
     driver-class-name: org.postgresql.Driver
@@ -20,16 +20,16 @@ spring:
     name: user-service
   cloud:
     config:
-      uri: http://config-server:8888
+      uri: http://localhost:8888
       fail-fast: true
 
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka-server:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
     register-with-eureka: true
     fetch-registry: true
 
 company:
   service:
-    url: http://company-service:8882
+    url: http://localhost:8882
